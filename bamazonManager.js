@@ -29,7 +29,13 @@ function displayInventory(){
     
     for (i = 0; i < res.length; i++) {
     
-      table.push([res[i].id, res[i].product_name, res[i].deparment_id, res[i].price, res[i].stock_quantity]);
+      table.push([
+        res[i].id,
+        res[i].product_name,
+        res[i].deparment_id,
+        res[i].price,
+        res[i].stock_quantity
+      ]);
 		}
 		console.log(table.toString());
     
@@ -72,15 +78,15 @@ function restockRequest(){
 	},
 	]).then(function(answers){
 		var quantityAdded = answers.Quantity;
-		var IDOfProduct = answers.ID;
+		var IDOfProduct = answers.Id;
 		restockInventory(IDOfProduct, quantityAdded);
 	});
 };
 
-function restockInventory(id, quant){
-	connection.query('SELECT * FROM Products WHERE item_id = '+id, function(err,res){
+function restockInventory(id, quantity){
+	connection.query('SELECT * FROM products WHERE id = 2 '+ id, function(err,res){
 		if(err){console.log(err)};
-		connection.query('UPDATE Products SET stock_quantity = stock_quantity + ' +stock_quantity+ 'WHERE item_id =' +item_id);
+		connection.query('UPDATE products SET stock_quantity = stock_quantity + ' + stock_quantity + 'WHERE id = ?' + id);
 
 		displayInventory();
 	});
@@ -127,9 +133,10 @@ function addRequest(){
   };
 
   function buildNewItem(name,category,price,quantity){
-  	connection.query('INSERT INTO products (item_id,product_name,department_name,price,stock_quantity) VALUES("' + id + '","' + name + '","' + category + '",' + price + ',' + quantity +  ')');
+    connection.query('INSERT INTO products (id,product_name,department_id,price,stock_quantity) VALUES("' + id + '", "' + name + '", "' + category + '", ' + price + ', ' + quantity +  ')');
   	displayInventory();
-  };
+};
+
 
   function removeRequest(){
   	inquirer.prompt([{
@@ -143,7 +150,7 @@ function addRequest(){
   };
 
   function removeInventory(id){
-  	connection.query('DELETE FROM Products WHERE item_id = ' + id);
+  	connection.query('DELETE FROM products WHERE id = ? ' + id);
   	displayInventory();
   };
 

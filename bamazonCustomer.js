@@ -20,7 +20,7 @@ var display = function() {
     console.log("This is.... Bamazon, You want it? We have it!");
     
     var table = new Table({
-      head: ["Id", "Product Name","Deparment", "Cost", "In Stock" ],
+      head: ["Id", "Product Name","Deparment", "Cost", "Quantity" ],
       colWidths: [5, 20, 15, 8, 10],
       colAligns: ["center", "left", "right"],
       style: {
@@ -76,6 +76,7 @@ var shopping = function() {
                     res[0].stock_quantity +
                     " of that product :("
                 );
+                
                 shopping();
               }
               
