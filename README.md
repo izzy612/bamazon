@@ -16,6 +16,8 @@ needed, and even add new items to the inventory!
 
 <img width="682" alt="Screen Shot 2019-05-06 at 12 54 49 AM" src="https://user-images.githubusercontent.com/48463632/57207239-091c3100-6f9a-11e9-86ec-051b20c4b3a9.png">
 
+<img width="682" alt="Screen Shot 2019-05-06 at 12 56 35 AM" src="https://user-images.githubusercontent.com/48463632/57207253-205b1e80-6f9a-11e9-9f60-fe253a6b213b.png">
+
 
 
 #### Technologies used
